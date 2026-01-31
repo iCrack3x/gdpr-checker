@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schrems II Explained: What It Means for Your Data</title>
+    <meta name="description" content="Understand Schrems II: The EU court ruling that invalidated Privacy Shield and changed EU-US data transfers forever. Compliance guide for businesses.">
+    <meta name="keywords" content="Schrems II, Privacy Shield, EU data transfer, GDPR compliance, EU-US data">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 50px 20px; text-align: center; margin: -20px -20px 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 1.1em; }
+        .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .card h2 { color: #1e3a8a; margin-bottom: 15px; font-size: 1.5em; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+        .card h3 { color: #1e40af; margin: 20px 0 10px; font-size: 1.2em; }
+        .highlight { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning { background: #fee2e2; border-left: 4px solid #ef4444; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .success { background: #d1fae5; border-left: 4px solid #10b981; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        ul { margin: 15px 0 15px 25px; }
+        li { margin-bottom: 10px; }
+        .timeline { position: relative; padding-left: 30px; }
+        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #3b82f6; }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: #3b82f6; }
+        .date { font-weight: bold; color: #1e40af; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        th { background: #eff6ff; font-weight: 600; color: #1e40af; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        .cta h3 { color: white; margin-bottom: 15px; }
+        .btn { display: inline-block; padding: 12px 30px; background: white; color: #667eea; text-decoration: none; border-radius: 25px; font-weight: 600; margin-top: 15px; }
+        footer { text-align: center; padding: 40px 20px; color: #6b7280; font-size: 0.9em; }
+        a { color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Schrems II Explained</h1>
+            <p>The EU ruling that changed data privacy forever</p>
+        </header>
+
+        <div class="card">
+            <h2>What is Schrems II?</h2>
+            <p>Schrems II is a landmark decision by the Court of Justice of the European Union (CJEU) on July 16, 2020. Named after Austrian privacy activist <strong>Max Schrems</strong>, the ruling invalidated the EU-US Privacy Shield framework and imposed strict requirements on data transfers to the United States.</p>
+            
+            <div class="warning">
+                <strong>⚠️ Critical Impact:</strong> The ruling affects ANY business transferring EU personal data to US servers, including cloud services like AWS, Google Cloud, and Microsoft Azure.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>The Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="date">2011</div>
+                    <p>Max Schrems files complaints against Facebook with the Irish Data Protection Commissioner regarding EU-US data transfers.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">2015</div>
+                    <p><strong>Schrems I:</strong> CJEU invalidates Safe Harbor agreement, ruling that US surveillance laws violate EU fundamental rights.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">2016</div>
+                    <p>EU and US negotiate Privacy Shield as Safe Harbor replacement.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">July 16, 2020</div>
+                    <p><strong>Schrems II:</strong> CJEU invalidates Privacy Shield, ruling that US surveillance laws (FISA 702) still don't meet EU standards.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">2023-2026</div>
+                    <p>Businesses scramble to implement Standard Contractual Clauses (SCCs) with additional safeguards. New EU-US Data Privacy Framework emerges.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Why the US Failed the Test</h2>
+            <p>The CJEU identified fundamental problems with US surveillance law:</p>
+            <ul>
+                <li><strong>Section 702 FISA:</strong> Allows US intelligence to collect foreign communications without individual warrants</li>
+                <li><strong>Executive Order 12333:</strong> Permits mass surveillance outside US borders</li>
+                <li><strong>No Redress:</strong> EU citizens cannot effectively challenge surveillance in US courts</li>
+                <li><strong>Proportionality Issues:</strong> US surveillance is not limited to what's strictly necessary</li>
+            </ul>
+            
+            <div class="highlight">
+                <strong>Key Quote from the Ruling:</strong> "The limitations on the protection of personal data arising from US law are not circumscribed in a way that satisfies requirements of EU law."
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>What Businesses Must Do Now</h2>
+            
+            <h3>1. Data Transfer Impact Assessment (DTIA)</h3>
+            <p>Before transferring data to the US, you must:</p>
+            <ul>
+                <li>Map all data flows to third countries</li>
+                <li>Assess surveillance risks in destination countries</li>
+                <li>Evaluate if supplementary measures are needed</li>
+            </ul>
+
+            <h3>2. Standard Contractual Clauses (SCCs)</h3>
+            <p>The CJEU upheld SCCs BUT with conditions:</p>
+            <ul>
+                <li>Verify if SCCs provide effective protection in practice</li>
+                <li>Implement supplementary technical measures if needed</li>
+                <li>Be prepared to suspend transfers if protection is inadequate</li>
+            </ul>
+
+            <h3>3. Supplementary Measures</h3>
+            <p>When SCCs alone aren't enough:</p>
+            <table>
+                <tr>
+                    <th>Measure</th>
+                    <th>Effectiveness</th>
+                    <th>Use Case</th>
+                </tr>
+                <tr>
+                    <td>End-to-end encryption</td>
+                    <td>High</td>
+                    <td>Emails, file transfers</td>
+                </tr>
+                <tr>
+                    <td>Pseudonymization</td>
+                    <td>Medium</td>
+                    <td>Analytics, databases</td>
+                </tr>
+                <tr>
+                    <td>EU-only processing</td>
+                    <td>Highest</td>
+                    <td>Sensitive personal data</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>EU-Only Cloud Alternatives</h2>
+            <p>Avoid transfer risks entirely with EU-based providers:</p>
+            <ul>
+                <li><strong>OVHcloud (France):</strong> GDPR-native, government certified</li>
+                <li><strong>Hetzner (Germany):</strong> Price-performance leader</li>
+                <li><strong>Scaleway (France):</strong> ARM servers, Kubernetes focus</li>
+                <li><strong>Exoscale (Switiss):</strong> Swiss privacy law compliance</li>
+            </ul>
+            <p>→ <a href="data-sovereignty-guide.html">Read our full Data Sovereignty Guide</a></p>
+        </div>
+
+        <div class="card">
+            <h2>Compliance Checklist</h2>
+            <div class="success">
+                <strong>✓ Use this checklist to verify your compliance:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>☐ Mapped all data transfers to third countries</li>
+                    <li>☐ Completed Data Transfer Impact Assessment (DTIA)</li>
+                    <li>☐ Implemented Standard Contractual Clauses (SCCs)</li>
+                    <li>☐ Added supplementary measures where needed</li>
+                    <li>☐ Documented your Transfer Risk Assessment (TRA)</li>
+                    <li>☐ Reviewed contracts with US service providers</li>
+                    <li>☐ Considered EU-only alternatives for sensitive data</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>Need Help with GDPR Compliance?</h3>
+            <p>Check if your website meets all GDPR requirements with our free checker tool.</p>
+            <a href="index.html" class="btn">Start GDPR Check →</a>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                🍪 <a href="https://app.impact.com/campaign-campaign-info-v2/CookieYes.brand" style="color: white; text-decoration: underline;">Ensure cookie compliance with CookieYes</a> — 30% lifetime commission
+            </p>
+        </div>
+
+        <footer>
+            <p>© 2026 GDPR Checker | <a href="index.html">Home</a> | <a href="tools/">All Tools</a></p>
+            <p style="margin-top: 10px;">Learn more about <a href="https://noyb.eu">NOYB - European Center for Digital Rights</a></p>
+        </footer>
+    </div>
+</body>
+</html>
