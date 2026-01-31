@@ -328,17 +328,259 @@
             word-break: break-all;
         }
 
-        @media (max-width: 600px) {
+        /* Enhanced Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            color: #4a5568;
+            font-size: 1.1rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .loading-steps {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 300px;
+        }
+        
+        .loading-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #718096;
+            transition: all 0.3s;
+        }
+        
+        .loading-step.active {
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .loading-step.completed {
+            color: #48bb78;
+        }
+        
+        .step-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            background: #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .loading-step.active .step-icon {
+            background: #667eea;
+            color: white;
+            animation: pulse 1s infinite;
+        }
+        
+        .loading-step.completed .step-icon {
+            background: #48bb78;
+            color: white;
+        }
+        
+        /* Results Animation */
+        .result-item {
+            animation: slideIn 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Score Circle Animation */
+        .score-circle {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #667eea var(--score), #e2e8f0 var(--score));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: --score 1s ease-out;
+        }
+        
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .score-value {
+            position: relative;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a202c;
+            z-index: 1;
+        }
+        
+        /* Better Issue Cards */
+        .issue-card {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+        
+        .issue-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .issue-card.warning {
+            background: #fffbeb;
+            border-color: #fbbf24;
+        }
+        
+        .issue-card.success {
+            background: #f0fff4;
+            border-color: #68d391;
+        }
+        
+        .issue-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .issue-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-critical {
+            background: #fc8181;
+            color: white;
+        }
+        
+        .badge-warning {
+            background: #f6e05e;
+            color: #744210;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+            
             header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+            
+            .card {
+                padding: 20px;
+                margin: 15px;
+                border-radius: 12px;
             }
             
             .input-group {
                 flex-direction: column;
+                gap: 12px;
             }
             
             button {
                 width: 100%;
+                padding: 16px;
+                font-size: 1.1rem;
+            }
+            
+            input[type="url"] {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 16px;
+            }
+            
+            .score-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .score-circle::before {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .score-value {
+                font-size: 2rem;
+            }
+            
+            .share-section {
+                flex-direction: column;
+            }
+            
+            .share-section button {
+                width: 100%;
+            }
+            
+            /* Tool grid mobile */
+            div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Touch-friendly tap targets */
+        @media (pointer: coarse) {
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .issues-list li {
+                padding: 16px;
             }
         }
     </style>
@@ -364,9 +606,27 @@
             Die Ergebnisse zeigen typische GDPR-Probleme, die auf den meisten Websites gefunden werden.</p>
         </div>
 
-        <div id="loading" class="loading hidden">
+        <div id="loading" class="loading-overlay hidden">
             <div class="loading-spinner"></div>
-            <p>Analysiere Website...</p>
+            <p class="loading-text">Analysiere Website...</p>
+            <div class="loading-steps">
+                <div class="loading-step active" id="step1">
+                    <div class="step-icon">1</div>
+                    <span>Verbindung prüfen...</span>
+                </div>
+                <div class="loading-step" id="step2">
+                    <div class="step-icon">2</div>
+                    <span>HTML analysieren...</span>
+                </div>
+                <div class="loading-step" id="step3">
+                    <div class="step-icon">3</div>
+                    <span>Tracker erkennen...</span>
+                </div>
+                <div class="loading-step" id="step4">
+                    <div class="step-icon">4</div>
+                    <span>GDPR-Score berechnen...</span>
+                </div>
+            </div>
         </div>
 
         <div id="errorBox" class="error-box hidden">
@@ -585,6 +845,20 @@
             }
         });
 
+        // Loading step management
+        function updateLoadingStep(stepNum) {
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+                if (i < stepNum) {
+                    step.classList.add('completed');
+                    step.querySelector('.step-icon').textContent = '✓';
+                } else if (i === stepNum) {
+                    step.classList.add('active');
+                }
+            }
+        }
+
         async function startCheck() {
             const urlInput = document.getElementById('urlInput');
             const url = urlInput.value.trim();
@@ -611,20 +885,36 @@
             document.getElementById('demoNotice').classList.add('hidden');
             document.getElementById('loading').classList.remove('hidden');
             document.getElementById('checkBtn').disabled = true;
+            
+            // Reset loading steps
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+                step.querySelector('.step-icon').textContent = i;
+            }
+            updateLoadingStep(1);
 
             try {
+                // Simulate step progression for better UX
+                setTimeout(() => updateLoadingStep(2), 800);
+                setTimeout(() => updateLoadingStep(3), 1500);
+                
                 // Try to fetch the website
                 const result = await analyzeWebsite(checkUrl);
-                displayResults(result);
+                updateLoadingStep(4);
+                setTimeout(() => displayResults(result), 500);
             } catch (error) {
                 console.error('Error:', error);
                 // Show demo results if fetch fails
                 document.getElementById('demoNotice').classList.remove('hidden');
                 const demoResult = generateDemoResults(checkUrl);
-                displayResults(demoResult);
+                updateLoadingStep(4);
+                setTimeout(() => displayResults(demoResult), 500);
             } finally {
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('checkBtn').disabled = false;
+                setTimeout(() => {
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('checkBtn').disabled = false;
+                }, 800);
             }
         }
 
@@ -866,9 +1156,10 @@
                 return order[a.severity] - order[b.severity];
             });
 
-            sortedIssues.forEach(issue => {
+            sortedIssues.forEach((issue, index) => {
                 const li = document.createElement('li');
-                li.className = `issue-item ${issue.severity}`;
+                li.className = `issue-item result-item ${issue.severity}`;
+                li.style.animationDelay = `${index * 0.1}s`;
                 
                 const icon = issue.severity === 'success' ? '✅' : 
                             issue.severity === 'critical' ? '🔴' : 
